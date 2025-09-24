@@ -146,7 +146,7 @@ const CarPage = () => {
         {loading ? (
           <p className="text-center text-gray-500">Loading cars...</p>
         ) : (
-         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {filteredCars.length > 0 ? (
               filteredCars.map((car) => (
                 <Link
