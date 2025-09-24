@@ -51,7 +51,7 @@ const Profile = () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("upload_preset", "Autohub"); // <-- replace with your Cloudinary preset
+      formData.append("upload_preset", "Autohub1"); // <-- replace with your Cloudinary preset
       const cloudRes = await fetch(
         "https://api.cloudinary.com/v1_1/dvjis8d3y/image/upload", // <-- replace with your Cloudinary cloud name
         {

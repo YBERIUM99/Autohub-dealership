@@ -64,7 +64,7 @@ const SellACar = () => {
   const uploadToCloudinary = async (file) => {
     const fd = new FormData();
     fd.append("file", file);
-    fd.append("upload_preset", "Autohub");
+    fd.append("upload_preset", "Autohub1");
 
     const res = await fetch("https://api.cloudinary.com/v1_1/dvjis8d3y/image/upload", {
       method: "POST",
