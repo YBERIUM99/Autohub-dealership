@@ -64,7 +64,7 @@ const Signup = () => {
       setLoading(true);
 
       // Signup request
-      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/register`, {
+      const res = await fetch("https://autohub-dealership-backend.onrender.com/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

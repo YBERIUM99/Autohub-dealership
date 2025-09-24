@@ -31,7 +31,7 @@ const SellACar = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = "https://autohub-dealership-backend.onrender.com";
 
   const [imageFiles, setImageFiles] = useState([]);
   const [previewUrls, setPreviewUrls] = useState([]);

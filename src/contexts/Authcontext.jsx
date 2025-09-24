@@ -9,8 +9,7 @@ export const authContext = createContext();
   const [logingIn, setLoginIn] = useState(false);
   const [user, setUser] = useState(null);
 
-  const baseUrl =
-    import.meta.env.VITE_BASE_URL || "http://localhost:4000/api";
+  const baseUrl = "https://autohub-dealership-backend.onrender.com/api";
 
   const navigate = useNavigate();
 

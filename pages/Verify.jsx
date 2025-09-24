@@ -7,7 +7,7 @@ const Verify = () => {
   const [status, setStatus] = useState("verifying");
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BASE_URL}/auth/verify/${token}`)
+    fetch(`https://autohub-dealership-backend.onrender.com/api/auth/verify/${token}`)
       .then(res => {
         if (res.ok) {
           setStatus("success");

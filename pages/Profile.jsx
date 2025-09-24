@@ -17,7 +17,7 @@ const Profile = () => {
     dob: "",
   });
 
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = "https://autohub-dealership-backend.onrender.com";
 
   useEffect(() => {
     const loadUser = async () => {

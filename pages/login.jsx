@@ -53,7 +53,7 @@ const Login = () => {
       setLoading(true);
       setErrorMessage("");
 
-      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/login`, {
+      const res = await fetch("https://autohub-dealership-backend.onrender.com/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

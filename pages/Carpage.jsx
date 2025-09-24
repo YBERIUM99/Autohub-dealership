@@ -14,7 +14,7 @@ const CarPage = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products`);
+        const res = await fetch("https://autohub-dealership-backend.onrender.com/api/products");
         if (!res.ok) throw new Error("Failed to fetch cars");
         const data = await res.json();
         setCars(data);
