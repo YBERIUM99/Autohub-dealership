@@ -7,7 +7,7 @@ const Verify = () => {
   const [status, setStatus] = useState("verifying");
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/auth/verify/${token}`)
+    fetch(`${import.meta.env.VITE_BASE_URL}/auth/verify/${token}`)
       .then(res => {
         if (res.ok) {
           setStatus("success");

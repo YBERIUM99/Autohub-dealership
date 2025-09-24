@@ -17,7 +17,7 @@ const Profile = () => {
     dob: "",
   });
 
-  const baseUrl = import.meta.env.VITE_BASE_URL || "http://localhost:4000/api";
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     const loadUser = async () => {

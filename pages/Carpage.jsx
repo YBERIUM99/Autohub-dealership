@@ -14,7 +14,7 @@ const CarPage = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/products");
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products`);
         if (!res.ok) throw new Error("Failed to fetch cars");
         const data = await res.json();
         setCars(data);
