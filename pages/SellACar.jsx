@@ -222,7 +222,7 @@ const SellACar = () => {
           {/* Image upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Photos (files)</label>
-            <input type="file" accept="image/*" multiple onChange={handleFilesChange} className="w-full" />
+            <input style={{backgroundColor:"#3B82F6", borderRadius:"20px"}} type="file" accept="image/*" multiple onChange={handleFilesChange} className="w-full"/>
             <p className="text-xs text-gray-500 mt-1">You can add files or paste URLs below.</p>
             {previewUrls.length > 0 && (
               <div className="mt-3 grid grid-cols-3 sm:grid-cols-4 gap-2">
