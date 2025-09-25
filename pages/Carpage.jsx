@@ -64,7 +64,7 @@ const CarPage = () => {
 
       <div className="max-w-7xl mx-auto px-6 py-10">
         {/* Banner */}
-        <div className="w-[95%] mx-auto mb-8 rounded-xl overflow-hidden relative shadow-lg">
+        <div className="w-[98%] mx-auto mb-8 rounded-xl overflow-hidden relative shadow-lg">
           <div className="absolute inset-0 bg-black bg-opacity-40 z-10" />
           <div
             className="relative z-20 flex flex-col items-center justify-center h-full px-4"
