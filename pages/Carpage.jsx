@@ -1,4 +1,4 @@
-// src/pages/Carpage.jsx
+// src/pages/CarPage.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
@@ -14,7 +14,9 @@ const CarPage = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await fetch("https://autohub-dealership-backend.onrender.com/api/products");
+        const res = await fetch(
+          "https://autohub-dealership-backend.onrender.com/api/products"
+        );
         if (!res.ok) throw new Error("Failed to fetch cars");
         const data = await res.json();
         setCars(data);
@@ -37,13 +39,18 @@ const CarPage = () => {
 
     const cleanPrice = Number(car.price);
     const min =
-      priceFilter.min !== "" ? Number(priceFilter.min.replace(/[^\d.]/g, "")) : null;
+      priceFilter.min !== ""
+        ? Number(priceFilter.min.replace(/[^\d.]/g, ""))
+        : null;
     const max =
-      priceFilter.max !== "" ? Number(priceFilter.max.replace(/[^\d.]/g, "")) : null;
+      priceFilter.max !== ""
+        ? Number(priceFilter.max.replace(/[^\d.]/g, ""))
+        : null;
     let matchesPrice = true;
 
     if (!isNaN(cleanPrice)) {
-      if (min !== null && max !== null) matchesPrice = cleanPrice >= min && cleanPrice <= max;
+      if (min !== null && max !== null)
+        matchesPrice = cleanPrice >= min && cleanPrice <= max;
       else if (min !== null) matchesPrice = cleanPrice >= min;
       else if (max !== null) matchesPrice = cleanPrice <= max;
     }
@@ -84,7 +91,8 @@ const CarPage = () => {
                   className="flex items-center gap-1 w-full sm:w-auto px-3 sm:px-4 py-2 text-sm sm:text-base bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
                   onClick={() => setShowFilter((prev) => !prev)}
                 >
-                  <Filter size={16} /> <span className="hidden xs:inline">Filter</span>
+                  <Filter size={16} />{" "}
+                  <span className="hidden xs:inline">Filter</span>
                 </button>
                 {/* Filter Dropup */}
                 {showFilter && (
@@ -95,7 +103,10 @@ const CarPage = () => {
                         type="number"
                         value={priceFilter.min}
                         onChange={(e) =>
-                          setPriceFilter({ ...priceFilter, min: e.target.value })
+                          setPriceFilter({
+                            ...priceFilter,
+                            min: e.target.value,
+                          })
                         }
                         className="w-full border border-gray-300 rounded-lg px-2 py-1"
                       />
@@ -104,7 +115,10 @@ const CarPage = () => {
                         type="number"
                         value={priceFilter.max}
                         onChange={(e) =>
-                          setPriceFilter({ ...priceFilter, max: e.target.value })
+                          setPriceFilter({
+                            ...priceFilter,
+                            max: e.target.value,
+                          })
                         }
                         className="w-full border border-gray-300 rounded-lg px-2 py-1"
                       />
@@ -146,28 +160,32 @@ const CarPage = () => {
         {loading ? (
           <p className="text-center text-gray-500">Loading cars...</p>
         ) : (
-         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredCars.length > 0 ? (
               filteredCars.map((car) => (
                 <Link
                   key={car._id}
                   to={`/car/${car._id}`}
-                  className="block bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition"
+                  className="flex flex-col bg-white shadow-md rounded-xl overflow-hidden hover:shadow-2xl transition"
                 >
-                  <img
-  src={
-    Array.isArray(car.image) && car.image.length > 0
-      ? car.image[0]
-      : "https://via.placeholder.com/400x300?text=No+Image"
-  }
-  alt={car.name || "Car"}
-  className="w-60 h-30  bg-gray-100"
-/>
-                  <div className="p-4">
-                    <h2 className="text-xl font-bold">{car.name || "Unknown Car"}</h2>
+                  <div className="w-full h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden">
+                    <img
+                      src={
+                        Array.isArray(car.image) && car.image.length > 0
+                          ? car.image[0]
+                          : "https://via.placeholder.com/400x300?text=No+Image"
+                      }
+                      alt={car.name || "Car"}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4 flex flex-col flex-grow">
+                    <h2 className="text-lg font-bold line-clamp-1">
+                      {car.name || "Unknown Car"}
+                    </h2>
                     <p className="text-gray-600">{car.year || "N/A"}</p>
-                    <p className="text-blue-600 text-lg font-semibold">
-                      ${car.price?.toLocaleString() || "Price on request"}
+                    <p className="text-blue-600 text-lg font-semibold mt-auto">
+                      ₦{car.price?.toLocaleString() || "Price on request"}
                     </p>
                   </div>
                 </Link>
