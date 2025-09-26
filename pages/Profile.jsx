@@ -62,7 +62,7 @@ const Profile = () => {
       const cloudData = await cloudRes.json();
       if (!cloudData.secure_url) throw new Error("Cloud upload failed");
 
-      const res = await fetch(`${baseUrl}/auth/profile-picture`, {
+      const res = await fetch(`${baseUrl}/api/auth/profile-picture`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
