@@ -104,7 +104,7 @@ const SellACar = () => {
       };
 
       const token = localStorage.getItem("token");
-      const res = await fetch(`${baseUrl}/products`, {
+      const res = await fetch(`${baseUrl}/api/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
