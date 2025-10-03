@@ -185,7 +185,7 @@ const CarPage = () => {
                     </h2>
                     <p className="text-gray-600">{car.year || "N/A"}</p>
                     <p className="text-blue-600 text-lg font-semibold mt-auto">
-                      ₦{car.price?.toLocaleString() || "Price on request"}
+                      ${car.price?.toLocaleString() || "Price on request"}
                     </p>
                   </div>
                 </Link>

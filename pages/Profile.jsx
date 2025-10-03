@@ -17,12 +17,25 @@ const Profile = () => {
     dob: "",
   });
 
+  const [cars, setCars] = useState([]); // Cars listed by the user
+  const [soldCount, setSoldCount] = useState(0);
+
   const baseUrl = "https://autohub-dealership-backend.onrender.com";
 
   useEffect(() => {
     const loadUser = async () => {
       try {
         await fetchUser();
+        // Fetch cars the user has listed
+        const res = await fetch(`${baseUrl}/api/products/my-cars`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        const data = await res.json();
+        if (res.ok) {
+          setCars(data);
+        }
       } catch (err) {
         console.error(err);
       } finally {
@@ -37,7 +50,7 @@ const Profile = () => {
       setFormData({
         phone: user?.phone || "",
         address: user?.address || "",
-        dob: user?.dob ? user.dob.split("T")[0] : "", // format for input[type="date"]
+        dob: user?.dob ? user.dob.split("T")[0] : "",
       });
     }
   }, [user]);
@@ -53,7 +66,7 @@ const Profile = () => {
       formData.append("file", file);
       formData.append("upload_preset", "Autohub1");
       const cloudRes = await fetch(
-        "https://api.cloudinary.com/v1_1/dvjis8d3y/image/upload", 
+        "https://api.cloudinary.com/v1_1/dvjis8d3y/image/upload",
         {
           method: "POST",
           body: formData,
@@ -105,6 +118,47 @@ const Profile = () => {
       console.error(err);
       toast.error(err.message || "Profile update failed");
     }
+  };
+
+const handleDelete = async (id) => {
+  try {
+    const token = localStorage.getItem("token"); // or sessionStorage depending on how you store it
+
+    if (!token) {
+      alert("You must be logged in to delete cars.");
+      return;
+    }
+
+    const response = await fetch(`https://autohub-dealership-backend.onrender.com/api/products/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Delete failed:", response.status, errorText);
+      alert(`Delete failed: ${response.status} - ${errorText}`);
+      return;
+    }
+
+    // ✅ Remove deleted car from UI state immediately
+    setCars((prevCars) => prevCars.filter((car) => car._id !== id));
+
+    console.log("Car deleted successfully");
+  } catch (error) {
+    console.error("Delete error:", error);
+  }
+};
+
+
+
+
+  const handleSold = (carId) => {
+    setSoldCount(soldCount + 1);
+    toast.success("Car marked as sold!");
   };
 
   if (loading) {
@@ -269,12 +323,66 @@ const Profile = () => {
             Back
           </button>
         </div>
+
+        {/* ✅ Selling Details */}
+<div className="mt-12">
+  <h2 className="text-lg font-semibold text-gray-800 mb-4">Selling Details</h2>
+  <h3 className="text-md font-medium text-gray-600 mb-2">Cars Sold: {soldCount}</h3>
+
+  {cars.length === 0 ? (
+    <p className="text-gray-500">You have not listed any cars yet.</p>
+  ) : (
+    <div className="space-y-4">
+      {cars.map((car) => (
+        <div
+          key={car._id}
+          className="flex items-center justify-between border border-gray-200 rounded-lg p-3 shadow-sm"
+        >
+          <div className="flex items-center gap-4">
+            <img
+              src={car.image}
+              alt={car.name}
+              className="w-20 h-20 rounded-lg object-cover"
+            />
+            <div>
+              <p className="font-medium text-gray-800">{car.name}</p>
+              <p className="text-gray-600">${car.price}</p>
+              {/* ✅ show sellerName to confirm */}
+              <p className="text-xs text-gray-500">
+                Seller: {car.sellerName}
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <button
+              className="px-3 py-1 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700"
+              onClick={() => handleSold(car._id)}
+            >
+              Sold
+            </button>
+            <button
+              className="px-3 py-1 bg-red-600 text-white rounded-lg text-sm hover:bg-red-700"
+              onClick={() => handleDelete(car._id)}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+
+
+
       </div>
     </div>
   );
 };
 
 export default Profile;
+
 
 
 

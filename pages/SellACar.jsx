@@ -237,10 +237,8 @@ const SellACar = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Photos (URLs)</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2"></label>
             <div className="flex gap-2">
-              <input ref={urlInputRef} placeholder="https://..." className="flex-1 px-3 py-2 border rounded-lg" />
-              <button type="button" onClick={handleAddUrl} className="bg-gray-800 text-white px-3 rounded-lg">Add</button>
             </div>
             {imageUrls.length > 0 && (
               <div className="mt-2 flex gap-2 flex-wrap">
