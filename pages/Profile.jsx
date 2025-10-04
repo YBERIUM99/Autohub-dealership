@@ -340,7 +340,7 @@ const handleDelete = async (id) => {
         >
           <div className="flex items-center gap-4">
             <img
-              src={car.image}
+              src={car.image [0]}
               alt={car.name}
               className="w-20 h-20 rounded-lg object-cover"
             />
