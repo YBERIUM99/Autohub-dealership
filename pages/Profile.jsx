@@ -96,10 +96,10 @@ const Profile = () => {
     }
   };
 
-  // ✅ Handle Save Profile
+  // Save Profile
   const handleSaveProfile = async () => {
     try {
-      const res = await fetch(`${baseUrl}/auth/profile`, {
+      const res = await fetch(`${baseUrl}/api/auth/profile`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
