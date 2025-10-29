@@ -100,7 +100,7 @@ const SellACar = () => {
         sellerPhone: formData.sellerPhone || "",
         sellerEmail: formData.sellerEmail || "",
         sellerLocation: formData.sellerLocation || "",
-        sellerImage: user?.profilePicture || "", // <-- Added sellerImage
+        sellerImage: user?.profilePicture || "",
       };
 
       const token = localStorage.getItem("token");
@@ -144,7 +144,7 @@ const SellACar = () => {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* --- ALL INPUTS REMAIN INTACT --- */}
+          {/*  */}
           {/* Name, Price, Year, Mileage, Transmission, Fuel, Color, Engine, Description */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>

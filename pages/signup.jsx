@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-// ✅ Validation Schema
+// 
 const signUpSchema = yup.object({
   firstName: yup.string().required("First name is required"),
   lastName: yup.string().required("Surname is required"),
@@ -20,7 +20,7 @@ const signUpSchema = yup.object({
     .required("Confirm Password is required"),
 });
 
-// ✅ Background images
+// 
 const images = [
   "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1600&q=80",
   "https://i.etsystatic.com/27448350/r/il/779fea/4681213823/il_794xN.4681213823_272d.jpg",
@@ -48,9 +48,9 @@ const Signup = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState(""); // ✅ new state
+  const [successMessage, setSuccessMessage] = useState(""); 
 
-  // ✅ Background slider
+  //  Background slider
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
@@ -58,7 +58,7 @@ const Signup = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // ✅ Submit Handler with fetch
+  //  Submit Handler with fetch
   const onSubmit = async (data) => {
     try {
       setLoading(true);
@@ -77,7 +77,7 @@ const Signup = () => {
         return;
       }
 
-      // ✅ Instead of auto-login → show success message
+      // show success message
       setSuccessMessage(
         "🎉 Account created successfully! Please check your email to verify your account."
       );
@@ -115,7 +115,7 @@ const Signup = () => {
           </p>
         </div>
 
-        {/* ✅ Success Message */}
+        {/*  Success Message */}
         {successMessage ? (
           <div className="text-center text-green-600 font-medium p-4 bg-green-100 rounded-lg">
             {successMessage}

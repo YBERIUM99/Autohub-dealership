@@ -9,7 +9,7 @@ import Dashboard from "../pages/Dashboard";
 import Profile from "../pages/Profile";
 import "./styles/auth.css";
 import Verify from "../pages/Verify";
-import Carpage from "../pages/Carpage";   // capitalized C
+import Carpage from "../pages/Carpage";   
 import SingleCar from "../pages/SingleCar";
 import ProtectedRoute from "./contexts/ProtectedRoute";
 import SellACar from "../pages/SellACar";

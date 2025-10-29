@@ -58,8 +58,8 @@ export const authContext = createContext();
 
         if (resData.token) {
           localStorage.setItem("token", resData.token);
-          await fetchUser(); // fetch user after login
-          navigate("/Carspage"); // redirect after login
+          await fetchUser(); 
+          navigate("/Carspage"); 
         }
       } else {
         toast.error(resData.message || "Login failed");
@@ -77,7 +77,7 @@ export const authContext = createContext();
     localStorage.removeItem("token");
     setUser(null);
     toast.success("Logged out successfully");
-    navigate("/login"); // redirect to login after logout
+    navigate("/login"); 
   };
 
   // FETCH USER from backend
@@ -92,7 +92,7 @@ export const authContext = createContext();
 
       if (res.ok) {
         const data = await res.json();
-        setUser(data.user); // extract .user
+        setUser(data.user); 
       } else {
         logout();
       }

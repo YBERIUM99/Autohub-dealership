@@ -6,13 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faSpinner } from "@fortawesome/free-solid-svg-icons";
 // import { useNavigate } from "react-router-dom";  // Removed, using window.location
 
-// ✅ Validation Schema
+
 const loginSchema = yup.object({
   email: yup.string().email("Enter a valid email").required("Email is required"),
   password: yup.string().required("Password is required"),
 });
 
-// ✅ Background images
+
 const images = [
   "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1600&q=80",
   "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1600&q=80",
@@ -39,7 +39,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   // const navigate = useNavigate();  // Removed, using window.location
 
-  // ✅ Background slider
+  //  Background slider
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
@@ -47,7 +47,7 @@ const Login = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // ✅ Submit Handler with fetch
+  //  Submit Handler with fetch
   const onSubmit = async (data) => {
     try {
       setLoading(true);

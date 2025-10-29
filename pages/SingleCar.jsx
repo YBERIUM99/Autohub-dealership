@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const SingleCar = () => {
-  const { id } = useParams(); // MongoDB _id will come here
+  const { id } = useParams(); 
   const navigate = useNavigate();
 
   const [car, setCar] = useState(null);
@@ -54,7 +54,7 @@ const SingleCar = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
-      {/* Car Image with carousel */}
+      {/* Car Image carousel*/}
       <div className="bg-white shadow-lg rounded-xl overflow-hidden relative">
         {car.image && car.image.length > 0 ? (
           <img
@@ -68,7 +68,7 @@ const SingleCar = () => {
           </div>
         )}
 
-        {/* Left Arrow */}
+        {/* Left Arro */}
         {currentImage > 0 && (
           <button
             onClick={prevImage}
@@ -78,7 +78,7 @@ const SingleCar = () => {
           </button>
         )}
 
-        {/* Right Arrow */}
+        {/* Right Arro */}
         {car.image && currentImage < car.image.length - 1 && (
           <button
             onClick={nextImage}
@@ -142,11 +142,11 @@ const SingleCar = () => {
           )}
           <div>
             <p className="text-lg font-bold">{car.sellerName}</p>
-            {/* Optional fields in case you extend schema later */}
+            {/*  */}
             {car.sellerPhone && <p className="text-gray-600">{car.sellerPhone}</p>}
             {car.sellerEmail && <p className="text-gray-600">{car.sellerEmail}</p>}
             {car.sellerLocation && <p className="text-gray-600">{car.sellerLocation}</p>}
-            {/* No need to show the image URL as text */}
+            {/* */}
 
           </div>
         </div>

@@ -122,7 +122,7 @@ const Profile = () => {
 
 const handleDelete = async (id) => {
   try {
-    const token = localStorage.getItem("token"); // or sessionStorage depending on how you store it
+    const token = localStorage.getItem("token"); 
 
     if (!token) {
       alert("You must be logged in to delete cars.");
@@ -144,7 +144,7 @@ const handleDelete = async (id) => {
       return;
     }
 
-    // ✅ Remove deleted car from UI state immediately
+    //  Remove deleted car 
     setCars((prevCars) => prevCars.filter((car) => car._id !== id));
 
     console.log("Car deleted successfully");
@@ -324,7 +324,7 @@ const handleDelete = async (id) => {
           </button>
         </div>
 
-        {/* ✅ Selling Details */}
+        {/* Selling Details */}
 <div className="mt-12">
   <h2 className="text-lg font-semibold text-gray-800 mb-4">Selling Details</h2>
   <h3 className="text-md font-medium text-gray-600 mb-2">Cars Sold: {soldCount}</h3>
@@ -347,7 +347,7 @@ const handleDelete = async (id) => {
             <div>
               <p className="font-medium text-gray-800">{car.name}</p>
               <p className="text-gray-600">${car.price}</p>
-              {/* ✅ show sellerName to confirm */}
+              {/*  sellerName */}
               <p className="text-xs text-gray-500">
                 Seller: {car.sellerName}
               </p>
