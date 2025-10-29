@@ -187,7 +187,7 @@ const SellACar = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Color (optional)</label>
+              <label className="block text-sm font-medium text-gray-700">Color</label>
               <input {...register("color")} className="mt-1 w-full px-3 py-2 border rounded-lg" placeholder="e.g. Black" />
             </div>
             <div>
@@ -205,17 +205,17 @@ const SellACar = () => {
           {/* Seller info */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Seller Phone (optional)</label>
+              <label className="block text-sm font-medium text-gray-700">Seller Phone </label>
               <input {...register("sellerPhone")} className="mt-1 w-full px-3 py-2 border rounded-lg" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Seller Email (optional)</label>
+              <label className="block text-sm font-medium text-gray-700">Seller Email </label>
               <input type="email" {...register("sellerEmail")} className="mt-1 w-full px-3 py-2 border rounded-lg" />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Seller Location (optional)</label>
+            <label className="block text-sm font-medium text-gray-700">Seller Location</label>
             <input {...register("sellerLocation")} className="mt-1 w-full px-3 py-2 border rounded-lg" />
           </div>
 
