@@ -161,13 +161,73 @@ const handleDelete = async (id) => {
     toast.success("Car marked as sold!");
   };
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-600 text-lg">Loading profile...</p>
+if (loading) {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div
+        role="status"
+        aria-busy="true"
+        className="w-full max-w-2xl bg-white rounded-xl shadow-md border border-gray-200 p-8 animate-pulse"
+      >
+        {/* Top: avatar + name/email skeleton */}
+        <div className="flex flex-col items-center mb-8">
+          <div className="w-32 h-32 rounded-full bg-gray-200 shadow-inner" />
+          <div className="mt-4 w-48 h-6 rounded-md bg-gray-200" />
+          <div className="mt-2 w-36 h-4 rounded-md bg-gray-200" />
+        </div>
+
+        {/* Fields skeleton (3 columns-ish stack) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div className="space-y-3">
+            <div className="h-3 w-24 bg-gray-200 rounded" />
+            <div className="h-5 w-full bg-gray-200 rounded" />
+          </div>
+
+          <div className="space-y-3">
+            <div className="h-3 w-24 bg-gray-200 rounded" />
+            <div className="h-5 w-full bg-gray-200 rounded" />
+          </div>
+
+          <div className="space-y-3 sm:col-span-2">
+            <div className="h-3 w-28 bg-gray-200 rounded" />
+            <div className="h-5 w-full bg-gray-200 rounded" />
+          </div>
+
+          <div className="space-y-3">
+            <div className="h-3 w-20 bg-gray-200 rounded" />
+            <div className="h-5 w-full bg-gray-200 rounded" />
+          </div>
+
+          <div className="space-y-3">
+            <div className="h-3 w-28 bg-gray-200 rounded" />
+            <div className="h-5 w-full bg-gray-200 rounded" />
+          </div>
+        </div>
+
+        {/* Buttons skeleton */}
+        <div className="flex justify-center gap-4 mt-6">
+          <div className="h-10 w-36 rounded-lg bg-gray-200" />
+          <div className="h-10 w-24 rounded-lg bg-gray-200" />
+        </div>
+
+        {/* Subtle spinner + message for clarity */}
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <svg
+            className="animate-spin h-5 w-5 text-gray-400"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+          </svg>
+          <span className="text-gray-600 text-sm">Loading profile…</span>
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center py-12 px-4">
